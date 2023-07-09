@@ -1,0 +1,65 @@
+footer {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    background-color: #495E57;
+}
+
+.footer-img {
+    height: 40vh;
+    width: 15vw;
+    background-image: url(../../assets/restaurant_footer.jpg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    border-radius: 10px;
+    margin-left: 2rem;
+}
+
+.footer-links-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    margin-right: 2rem;
+}
+
+.footer-column > h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.footer-column > ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.footer-link {
+    color: #333333;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #EDEFEE;
+}
+
+@media screen and (max-width: 860px) {
+    footer {
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+    }
+
+    .footer-img {
+        display: none;
+    }
+
+    .footer-links-container {
+        flex-direction: column;
+        gap: 0;
+    }
+}

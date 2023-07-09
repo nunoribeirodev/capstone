@@ -23,7 +23,6 @@ nav {
 
 .nav-links {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
 }
 
@@ -32,10 +31,47 @@ nav {
     font-size: 25px;
     font-weight: bold;
     text-decoration: none;
-    flex-direction: column;
     transition: all 0.2s ease-in-out;
 }
 
 .nav-item:hover {
-    color: #F4CE14;
+    color: #333333;
+}
+
+.nav-hamburger {
+    display: flex;
+    margin-right: 2rem;
+}
+
+.nav-hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 50%;
+    padding: 1rem;
+}
+
+.nav-hamburger-close {
+    color: #495E57;
+}
+
+@media screen and (min-width: 860px) {
+    .nav-hamburger {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    nav {
+        padding: 0;
+    }
+
+    .nav-links {
+        display: none;
+    }
 }
