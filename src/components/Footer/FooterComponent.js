@@ -14,7 +14,7 @@ const FooterLinks = (props) => {
                     props.linksList.map((link) => {
                         return(
                             <li key={link}>
-                                <Link to=''className="footer-link">{link}</Link>
+                                <Link to='' className="footer-link">{link}</Link>
                             </li>
                         )
                     })

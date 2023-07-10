@@ -1,4 +1,7 @@
 import Hero from "../Hero/HeroComponent";
+import Specials from "../Specials/SpecialsComponent";
+import Testimonials from '../Testimonials/TestimonialsComponent';
+import About from "../About/AboutComponent";
 import heroImage from '../../assets/restaurant_food.jpg';
 
 const heroData = {
@@ -15,7 +18,9 @@ const Home = () => {
         <>
             <Hero data={heroData} />
             <main>
-                Some content
+                <Specials />
+                <Testimonials />
+                <About />
             </main>
         </>
     )
