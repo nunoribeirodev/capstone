@@ -18,8 +18,8 @@ const Header = () => {
                     {/* Desktop NavBar */}
                     <ul className="nav-links">
                         <Link to="/home" className="nav-item">Home</Link>
-                        <HashLink to="/#About" smooth className="nav-item">About</HashLink>
-                        <Link to="/specials" className="nav-item">Menu</Link>
+                        <HashLink to="/#about" smooth className="nav-item">About</HashLink>
+                        <HashLink to="/#specials" smooth className="nav-item">Menu</HashLink>
                         <Link to="/reservations" className="nav-item">Reservations</Link>
                         <Link to="/order" className="nav-item">Order Online</Link>
                         <Link to="/login" className="nav-item">Login</Link>
@@ -36,7 +36,7 @@ const Header = () => {
                                     <AiOutlineClose className="nav-hamburger-close" onClick={() => { setToggleMenu(false) }} />
                                     <Link to="/home" className="nav-item">Home</Link>
                                     <HashLink to="/#about" smooth className="nav-item">About</HashLink>
-                                    <Link to="/specials" className="nav-item">Menu</Link>
+                                    <HashLink to="/#specials" smooth className="nav-item">Menu</HashLink>
                                     <Link to="/reservations" className="nav-item">Reservations</Link>
                                     <Link to="/order" className="nav-item">Order Online</Link>
                                     <Link to="/login" className="nav-item">Login</Link>
