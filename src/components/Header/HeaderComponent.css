@@ -3,7 +3,11 @@ header {
     height: 100px;
     display: flex;
     justify-content: space-between;
-    background-color: #D2D4D3;
+    background: hsla(0,0%,82%,.65);
+    border: 1px solid hsla(0,0%,100%,.30);
+    position: fixed;
+    z-index: 1;
+    backdrop-filter: blur(5px);
 }
 
 .logo {
