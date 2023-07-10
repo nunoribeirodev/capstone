@@ -10,12 +10,12 @@ const Header = () => {
     return(
         <>
             <header>
-                <div class="logo">
+                <div className="logo">
                     <img src={headerLogo} alt="Little Lemon Restaurant" />
                 </div>
                 <nav>
                     {/* Desktop NavBar */}
-                    <ul class="nav-links">
+                    <ul className="nav-links">
                         <Link to="/home" className="nav-item">Home</Link>
                         <Link to="/about" className="nav-item">About</Link>
                         <Link to="/specials" className="nav-item">Menu</Link>
