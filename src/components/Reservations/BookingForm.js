@@ -104,7 +104,7 @@ const BookingForm = ({submitForm, availableTimes, dispatch}) => {
                         </select>
                     </div>
 
-                    <input type="submit" value="Make your reservation" disabled={!isFormValid()} />
+                    <input type="submit" value="Make your reservation" aria-label="On Click" disabled={!isFormValid()} />
                 </form>
             </div>
         </>
