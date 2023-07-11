@@ -51,7 +51,7 @@ const Specials = () => {
             <div className='specials-card-wrapper'>
                 {
                     specialsList.map((special) => {
-                        return(<SpecialCard props={special} />)
+                        return(<SpecialCard key={special.name} props={special} />)
                     })
                 }
             </div>

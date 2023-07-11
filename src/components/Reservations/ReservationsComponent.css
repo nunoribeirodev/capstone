@@ -32,6 +32,7 @@
 }
 
 .bookingForm input[type='submit'] {
+    margin-top: 1rem;
     font-weight: bold;
     background-color: #F4CE14;
     color: #333333;
@@ -40,4 +41,21 @@
     border: 1px solid #495E57;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,0,0,.2);
+}
+
+@media screen and (max-width: 480px) {
+    .bookingForm-row {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .bookingForm label {
+        font-size: 1.7rem;
+    }
+
+    .bookingForm input, select {
+        font-family: 'Markazi Text', sans-serif;
+        font-size: 1.4rem;
+    }
 }
