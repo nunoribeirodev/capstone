@@ -13,7 +13,7 @@ const testimonialList = [
 const renderRating = (rating) => {
     let content = [];
     for (let i = 0; i < rating; i++) {
-        content.push(<AiFillStar className='testimonials-container-card-rating' />)
+        content.push(<AiFillStar key={i} className='testimonials-container-card-rating' />)
     }
     return content;
 }
