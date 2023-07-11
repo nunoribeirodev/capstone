@@ -1,9 +1,19 @@
 import { useState } from "react";
 
+const ErrorMessage = ({message}) => {
+    return <p className="error-message">{message}</p>
+}
+
 const BookingForm = ({submitForm, availableTimes, dispatch}) => {
-    const [date, setDate] = useState();
+    const [date, setDate] = useState({
+        value: '',
+        isTouched: false
+    });
     const [time, setTime] = useState(availableTimes[0]);
-    const [guests, setGuests] = useState();
+    const [guests, setGuests] = useState({
+        value: '',
+        isTouched: false
+    });
     const [occasion, setOccasion] = useState('Birthday');
     const [booking, setBooking] = useState({
         date: date,
@@ -13,27 +23,31 @@ const BookingForm = ({submitForm, availableTimes, dispatch}) => {
     });
 
     const handleChangeDate = (e) => {
-        setDate(e.target.value);
+        setDate({...date, value: e.target.value});
         dispatch({
             type: 'addTimes',
             payload: date
         });
-        setBooking({...booking, date: e.target.value});
+        setBooking({...booking, date: date.value});
     }
 
     const handleChangeTime = (e) => {
         setTime(e.target.value);
-        setBooking({...booking, time: e.target.value});
+        setBooking({...booking, time: time});
     }
 
     const handleChangeGuests = (e) => {
-        setGuests(e.target.value);
-        setBooking({...booking, guests: e.target.value});
+        setGuests({...guests, value: e.target.value});
+        setBooking({...booking, guests: guests.value});
     }
 
     const handleChangeOccasion = (e) => {
         setOccasion(e.target.value);
-        setBooking({...booking, occasion: e.target.value});
+        setBooking({...booking, occasion: occasion});
+    }
+
+    const isFormValid = () => {
+        return date && time && (guests.value > 0 && guests.value <= 10);
     }
 
     const handleSubmitForm = (e) => {
@@ -45,13 +59,15 @@ const BookingForm = ({submitForm, availableTimes, dispatch}) => {
         <div className="bookingForm-container">
             <form className="bookingForm" onSubmit={handleSubmitForm}>
                 <div className="bookingForm-row">
-                    <label htmlFor="res-date">Choose date</label>
-                    <input id="res-date" type="date" onChange={handleChangeDate} />
+                    <label htmlFor="res-date">Choose date <sup>*</sup></label>
+                    <input id="res-date" type="date" aria-label="Choose date" aria-required="true" min={new Date().toISOString().split('T')[0]} onChange={handleChangeDate} onBlur={() => setDate({...date, isTouched: true})} />
                 </div>
+                {date.isTouched && !date.value ? <ErrorMessage message={'Date is required'} /> : null}
+                {date.isTouched && (date.value < new Date().toISOString().split('T')[0]) ? <ErrorMessage message={'Select a valid date'} /> : null}
 
                 <div className="bookingForm-row">
                     <label htmlFor="res-time">Choose time</label>
-                    <select id="res-time" onChange={handleChangeTime}>
+                    <select id="res-time" aria-label="Choose time" onChange={handleChangeTime}>
                         {
                             availableTimes.map((time) => {
                                 return (<option key={time}>{time}</option>)
@@ -61,19 +77,20 @@ const BookingForm = ({submitForm, availableTimes, dispatch}) => {
                 </div>
 
                 <div className="bookingForm-row">
-                    <label htmlFor="guests">Number of guests</label>
-                    <input id="guests" type="number" placeholder="1" min="1" max="10" onChange={handleChangeGuests}/>
+                    <label htmlFor="guests">Number of guests <sup>*</sup></label>
+                    <input id="guests" type="number" aria-label="Number of guests" aria-required="true" placeholder="1" min="1" max="10" onChange={handleChangeGuests} onBlur={() => setGuests({...guests, isTouched: true})} />
                 </div>
+                {guests.isTouched && (guests.value < 1 || guests.value > 10) ? <ErrorMessage message={'Number of guests is required'} /> : null}
 
                 <div className="bookingForm-row">
                     <label htmlFor="occassion">Occasion</label>
-                    <select id="occasion" onChange={handleChangeOccasion}>
+                    <select id="occasion" aria-label="Occasion" onChange={handleChangeOccasion}>
                         <option>Birthday</option>
                         <option>Anniversary</option>
                     </select>
                 </div>
 
-                <input type="submit" value="Make your reservation" />
+                <input type="submit" value="Make your reservation" disabled={!isFormValid()} />
             </form>
         </div>
     )

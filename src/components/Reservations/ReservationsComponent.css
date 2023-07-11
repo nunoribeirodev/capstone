@@ -13,6 +13,16 @@
     padding: 4rem 2rem;
 }
 
+.bookingForm sup {
+    color: red;
+}
+
+.bookingForm .error-message {
+    color: red;
+    margin: 0;
+    align-self: flex-end;
+}
+
 .bookingForm-row {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -41,6 +51,12 @@
     border: 1px solid #495E57;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,0,0,.2);
+    cursor: pointer;
+}
+
+.bookingForm input[type='submit']:disabled {
+    color: #EDEFEE;
+    cursor: not-allowed;
 }
 
 @media screen and (max-width: 480px) {
