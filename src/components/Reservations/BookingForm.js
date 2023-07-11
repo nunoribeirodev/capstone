@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-const availableTimes = ['18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:30'];
-
-const BookingForm = (props) => {
+const BookingForm = ({submitForm, availableTimes, dispatch}) => {
     const [date, setDate] = useState();
     const [time, setTime] = useState(availableTimes[0]);
     const [guests, setGuests] = useState();
@@ -16,6 +14,10 @@ const BookingForm = (props) => {
 
     const handleChangeDate = (e) => {
         setDate(e.target.value);
+        dispatch({
+            type: 'addTimes',
+            payload: date
+        });
         setBooking({...booking, date: e.target.value});
     }
 
@@ -36,7 +38,7 @@ const BookingForm = (props) => {
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        props.submitForm(booking);
+        submitForm(booking);
     }
 
     return(

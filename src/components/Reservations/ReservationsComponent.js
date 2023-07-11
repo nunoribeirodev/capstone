@@ -2,6 +2,8 @@ import './ReservationsComponent.css';
 import Hero from "../Hero/HeroComponent";
 import heroImage from '../../assets/Mario_and_Adrian_A.jpg';
 import BookingForm from './BookingForm';
+import { useReducer } from 'react';
+import { updateTimes, initializeTimes } from '../../utils/utils';
 
 const heroData = {
     heading: 'Reserve a table',
@@ -13,6 +15,8 @@ const heroData = {
 }
 
 const Reservations = () => {
+    const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+
     const submitForm = (booking) => {
         console.log(booking);
     }
@@ -20,7 +24,7 @@ const Reservations = () => {
     return(
         <>
             <Hero data={heroData} />
-            <BookingForm submitForm={submitForm} />
+            <BookingForm submitForm={submitForm} availableTimes={availableTimes} dispatch={dispatch} />
         </>
     )
 }
