@@ -17,7 +17,7 @@ const Header = () => {
                 <nav>
                     {/* Desktop NavBar */}
                     <ul className="nav-links">
-                        <Link to="/home" className="nav-item">Home</Link>
+                        <Link to="/" className="nav-item">Home</Link>
                         <HashLink to="/#about" smooth className="nav-item">About</HashLink>
                         <HashLink to="/#specials" smooth className="nav-item">Menu</HashLink>
                         <Link to="/reservations" className="nav-item">Reservations</Link>
